@@ -27,8 +27,8 @@ jobs:
 
       - name: Simlar tests fallidos
         run: |
-        echo "Ejecutando tests..."
-        exit 1
+          echo "Ejecutando tests..."
+          exit 1
 
   deploy:
     name: Deploy
