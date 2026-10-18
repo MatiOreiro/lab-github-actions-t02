@@ -26,6 +26,15 @@ jobs:
           echo "Actor: ${{ github.actor }}"
           echo "Runner OS: ${{ runner.os }}"
 
+      - name: Generar tag de imagen
+        id: tag
+        run: |
+          SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+          echo "value=$SHORT_SHA" >> $GITHUB_OUTPUT
+
+      - name: Usar el tag
+        run: echo "Tag: ${{ steps.tag.outputs.value }}"
+
       - name: Build imagen (sin push)
         uses: docker/build-push-action@v5
         with:
